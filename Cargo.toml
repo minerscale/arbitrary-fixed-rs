@@ -1,5 +1,5 @@
 [package]
-name = "arbitrary_fixed"
+name = "arbitrary-fixed"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 bytemuck = { version = "1.13.1", features = ["derive"] }
 num-traits = "0.2.15"
+konst = "0.3.4"

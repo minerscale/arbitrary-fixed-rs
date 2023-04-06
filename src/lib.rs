@@ -15,9 +15,17 @@ use num_traits::NumCast;
 use num_traits::ToPrimitive;
 use num_traits::{Num, One, Zero};
 use std::{cmp::Ordering, num::ParseIntError};
+use konst::{primitive::parse_usize, result::unwrap_ctx};
 
-pub const SIZE: usize = 4;
-pub const SCALING_FACTOR: usize = (SIZE - 1) * 32;
+pub const SIZE: usize = match option_env!("FIX_SIZE") {
+        Some(x) => unwrap_ctx!(parse_usize(x)),
+        None => 4
+    };
+
+pub const SCALING_FACTOR: usize = match option_env!("FIX_SCALING_FACTOR") {
+        Some(x) => unwrap_ctx!(parse_usize(x)),
+        None => SIZE / 2
+    };
 
 #[derive(Copy, Clone, Default, PartialEq, Eq, Ord, Pod, Zeroable)]
 #[repr(C)]
