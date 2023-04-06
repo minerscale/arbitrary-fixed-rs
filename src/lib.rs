@@ -24,7 +24,7 @@ pub const SIZE: usize = match option_env!("FIX_SIZE") {
 
 pub const SCALING_FACTOR: usize = match option_env!("FIX_SCALING_FACTOR") {
         Some(x) => unwrap_ctx!(parse_usize(x)),
-        None => SIZE / 2
+        None => (SIZE / 2) * 32
     };
 
 #[derive(Copy, Clone, Default, PartialEq, Eq, Ord, Pod, Zeroable)]
